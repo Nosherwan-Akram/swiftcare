@@ -1,0 +1,61 @@
+<% include ./partials/header %>
+
+	<div class="ui center aligned container" style="margin-top:100px;">
+
+		<h1 id="header" class="ui blue massive block header very padded"> Welcome To Swift Care </h1>
+
+		
+        <h3 class = "ui medium red block header">Invalid login credentials. Please try again.</h3>
+
+
+		<div class="ui  divider " id="divider"></div>
+		<div class="left aligned ui green raised segment" id="segment">
+			<form action = "/login" method = "POST">
+				<div class="ui form">
+					<div class="ui grid" style="margin:auto;">
+
+
+						<div class="row">
+							<div class="column">
+								<label for="email" class="label">Email:</label>
+							</div>
+
+							<div class="eight wide centered  column">
+								<input id="email" type="email" name="email" placeholder="Enter Your E-mail">
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="column">
+								<label for="password" class="label">Password:</label>
+							</div>
+
+							<div class="eight wide centered column">
+								<input id="password" type="password" name="password" placeholder="Enter Your Password">
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="ui center aligned container">
+								<button class="ui  compact  blue animated massive button center aligned ">
+							                            		 <div class="visible content"> Log In </div>
+
+							                            		 <div class="hidden content">
+							                                		  <i class = "sign in icon"></i>
+							                            		</div>
+
+															</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	<% include ./partials/footer %>

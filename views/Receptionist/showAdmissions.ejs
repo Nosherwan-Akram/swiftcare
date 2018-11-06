@@ -1,0 +1,88 @@
+<% include ../partials/header %>
+<div class="ui center aligned container">
+    <h1 class = "ui massive blue block header very padded" style = "margin: 40px;"> Admissions </h1>
+</div>
+<div class = "ui section divider"> </div>
+
+<% if (admissions.length !== 0){ %>
+    <div class = "ui piled segments animated celled divided list">
+   <% admissions.forEach(function(admission){ %>
+       <div class = "item">
+        <div class = "ui piled segment">
+            <div class = "ui text container">
+                <h1 class = "center aligned header"> Admission # <%= admission.admissionID %> </h1>
+                <div class = "ui divider"> </div>
+                <div class = "ui green segment center aligned">
+                <p> Date: <%=admission.date %> </p>
+                <p> Patient ID: <%=admission.patientID %> </p>
+                <p> Doctor ID: <%=admission.doctorID %> </p>
+                <p> Room: <%=admission.roomNumber%> </p>
+                </div>
+                <div class = "ui vertical hidden divider"></div>
+                <div class = "ui right aligned basic segment">
+                        <% if (admission.isActive) { %>
+                        <% console.log(admission.admissionID) %>
+                    <button id = "<%=admission.admissionID%>" class = "ui markCompleteButton inverted green large button"> Mark As Finished </button>
+                    
+                    <button id = "<%=admission.admissionID%>" class = "ui deleteActiveButton inverted red large button"> Delete </button>
+                    <% } else {%>
+                    <button id = "<%=admission.admissionID%>" class = "ui deleteOldButton inverted red large button"> Delete </button>
+                    <% }%>
+                </div>
+            </div>
+        </div>
+       </div>
+   <% }) %>
+
+<% } %>
+    </div>
+
+    <script>
+        function markComplete(event){
+            console.log("event triggered");
+            button = event.target;
+            var id = button.getAttribute("id");
+            $.ajax({
+            url: 'completeAdmission/' + id,
+            type: 'POST',
+            success: function() {
+                location.reload(true);
+    }
+});
+
+        }
+
+        function deleteActive(event){
+            console.log("event triggered");
+            button = event.target;
+            var id = button.getAttribute("id");
+
+            $.ajax({
+            url: 'deleteAdmissionActive/' + id,
+            type: 'DELETE',
+            success: function() {
+                location.reload(true);
+    }
+})};
+            function deleteOld(event){
+            button = event.target;
+            var id = button.getAttribute("id");
+
+            $.ajax({
+            url: 'deleteAdmissionOld/' + id,
+            type: 'DELETE',
+            success: function() {
+                location.reload(true);
+    }
+})};
+
+
+        
+        $(".markCompleteButton").on("click", markComplete);
+        $(".deleteActiveButton").on("click", deleteActive);
+        $(".deleteOldButton").on("click", deleteOld);
+
+    </script>
+
+
+<% include ../partials/footer %>

@@ -1,0 +1,64 @@
+<% include ../partials/header %>
+<div class="ui center aligned container">
+    <h1 class="ui massive blue block header very padded" style="margin:40px;"> Patients </h1>
+    <div class="ui section divider"></div>
+
+    <% if (patients.length !== 0) { %>
+        <div class="ui piled segments">
+            <div class="ui animated list">
+                <% patients.forEach(function(patient) { %>
+                    <div class="item">
+                        <div class="ui green piled segment">
+                            <p><span class="ui small green header">Patient ID:</span>
+                                <%= patient.User.userID %>
+                            </p>
+
+                            <p><span class="ui small green header">Patient Name:</span>
+                                <%= patient.User.firstName + " " + patient.User.lastName %>
+                            </p>
+
+                            <p><span class="ui small green header">Phone:</span>
+                                <%= patient.User.phone %>
+                            </p>
+
+                            <p><span class="ui small green header">Email:</span>
+                                <%= patient.User.email %>
+                            </p>
+
+                            <div class="ui divider"></div>
+
+
+                        </div>
+                    </div>
+                    <%}); %>
+            </div>
+
+        </div>
+        <% } else { %>
+            <h2 class="ui large blue inverted block header very padded"> There are currently no active appointments </h2>
+
+            <% } %>
+
+</div>
+<% include ../partials/footer %>
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>Patients</h1>
+
+
+<% patients.forEach(function (patient) { %>
+    <div>
+        <p>Patient: <strong><%=patient.firstName + " " + patient.lastName%></strong></p>
+        <p> ID: <strong><%=patient.userID%></strong></p>
+        <p> Phone: <strong><%=patient.phone%></strong></p>
+        <p> Email: <strong><%=patient.email%></strong></p>
+    </div>
+<% }) %> -->

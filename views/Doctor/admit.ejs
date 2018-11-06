@@ -1,0 +1,77 @@
+<% include ../partials/header %>
+
+
+      <div class="ui  center aligned container" style="margin:100px 0px;">
+            <h1 class="ui massive blue block header very padded">Admit Patient </h1>
+            <div class="ui divider"></div>
+
+            <div class="left aligned ui green raised segment" style="width:60%; margin: auto;">
+
+                  <form action = "/doctors/apppointments/<%=appointment.appointmentID%>/admit" method = "POST" id = "admit-form">
+                        <div class="ui form">
+
+
+
+                              <div class="ui grid" style="margin: auto;">
+
+                                    <div class="row">
+                                          <div class="five wide column">
+                                                <label class="ui  green medium header" for="patientName" id="patient_label">Patient Name: </label>
+                                          </div>
+
+
+                                          <div class="eight wide column">
+                                                <input type="text" id="patientName" value = "<%= patientUser.firstName + ' ' + patientUser.lastName%>" readonly>
+
+                                          </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                          <div class="five wide column">
+                                                <label class="ui green medium header" for="Room_No">Room No:</label>
+                                          </div>
+
+
+                                          <div class="eight wide column">
+                                                <select id="Room_No" name = "roomNumber" required>
+                                                      <% vacantRooms.forEach(function(room){ %>
+                                                            <option value = "<%=room%>"><%= room %></option>
+                                                     <% })%>
+                              </select>
+                                          </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                          <div class="five wide column">
+                                                <label class="ui green medium header" for="inputState">Date of admission:</label>
+                                          </div>
+
+                                          <div class="eight wide column">
+                                                <input type="datetime-local" id="enter_Date" placeholder="Date" name = "date" required>
+                                          </div>
+                                    </div>
+
+
+
+                                    <div class="ui center aligned	 container">
+                                          <button class="ui  compact  blue inverted massive button column center aligned ">
+                                                Admit
+
+                                          </button>
+                                    </div>
+
+                              </div>
+                        </div>
+                  </form>
+            </div>
+
+           
+
+      </div>
+
+
+
+      <% include ../partials/footer %>

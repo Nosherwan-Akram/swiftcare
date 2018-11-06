@@ -1,0 +1,69 @@
+<% include ../partials/header %>
+    <div class="ui  center aligned container" style="margin:100px 0px;">
+
+        <h1 class="ui massive blue block header very padded">Add medicine </h1>
+        <div class="ui divider"></div>
+        <div class="left aligned ui green raised segment" style="width:60%; margin: auto;">
+            <form method = "POST" action = "/pharmacists/medicines">
+                <div class="ui form">
+
+
+                    <div class="ui grid" style="margin:auto;">
+
+                        <div class="row">
+                            <div class="four wide column">
+                                <label class="ui  green medium header" for="medicineName">Name:</label>
+                            </div>
+
+                            <div class="eight wide column">
+                                <input name = "name" type="text" id="medicineName" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="four wide column">
+                                <label class="ui  green medium header" for="medicineDescription">Description:</label>
+                            </div>
+
+                            <div class="eight wide column">
+                                <textarea name = "description" id="medicineDescription"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="four wide column">
+                                <label class="ui  green medium header" for="medicineQuantity">Quantity:</label>
+                            </div>
+
+                            <div class="eight wide column">
+                                <input name = "quantity" type="number" id="medicineQuantity" required>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="four wide column">
+                                <label class="ui  green medium header" for="medicineCost">Cost:</label>
+                            </div>
+
+                            <div class="eight wide column">
+                                <input name = "cost" type="number" id="medicineCost" required>
+                            </div>
+                        </div>
+
+
+
+                        <div class="ui center aligned  container">
+                            <button class="ui  compact  blue inverted massive button column center aligned ">
+                                Add
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <% include ../partials/footer %>

@@ -1,0 +1,70 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin:40px;"> Medicines </h1>
+        <div class="ui section divider"></div>
+
+        <% if (medicines.length !== 0) { %>
+            <div class="ui piled segments">
+                <div class="ui animated list">
+                    <% medicines.forEach(function(medicine) { %>
+                        <div class="item">
+                            <div class="ui green piled segment">
+                                <p><span class="ui small green header">Name:</span>
+                                    <%= medicine.name %>
+                                </p>
+                                <p><span class="ui small green header">Quantity:</span>
+                                    <%= medicine.quantity %>
+                                </p>
+
+                                <div class="ui divider"></div>
+
+                                <form action="/pharmacists/medicines/<%=medicine.medicineID%>?_method=DELETE" method="POST">
+                                    <input class = "ui large red inverted button" type="submit" value="Delete Medicine">
+                                </form>
+                
+                                <form action="/pharmacists/medicines/<%=medicine.medicineID%>/edit" method="GET">
+                                    <input class="ui large yellow inverted button"  type = "submit" value="Update Medicine">
+                                </form>
+
+                            </div>
+                        </div>
+                        <%}); %>
+                </div>
+
+            </div>
+            <% } else { %>
+                <h2 class="ui large blue inverted block header very padded"> There are currently no active appointments </h2>
+
+                <% } %>
+
+    </div>
+    <% include ../partials/footer %>
+
+
+
+
+
+
+
+
+        <!-- <h1>Medicines</h1>
+
+
+        <% medicines.forEach(function (medicine) { %>
+            <div>
+                <p><strong><%= medicine.name %></strong></p>
+                <p>
+                    <%= medicine.description %>
+                </p>
+
+                <p>Availability :
+                    <%= medicine.quantity %>
+                </p>
+                <p>Price :
+                    <%= medicine.cost %>
+                </p>
+
+
+            </div>
+            <hr>
+            <% }) %> -->

@@ -1,0 +1,69 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin:40px;"> My Appointments </h1>
+        <div class="ui section divider"></div>
+        <% if (appointments.length !== 0) { %>
+            <div class="ui piled segments">
+                <div class="ui animated list">
+                    <% appointments.forEach(function(appointment){ %>
+
+                        <div class = "item">
+                            <div class = "ui green piled segment">
+                                <h3 class = "ui green header">Appointment # <%= appointment.appointmentID %></h3>
+                            <p>
+                             <div class = "ui section divider"></div>
+                                <span class = "ui small green header">Date/Time:</span><%= appointment.date %>
+                            </p>
+                            <div class = "ui divider"></div>
+                           
+                            <p>
+                                    <span class = "ui small green header">Doctor ID:</span><%= appointment.doctorID %>
+                            </p>
+                            <div class = "ui divider"></div>
+                            <p>
+                                    <span class = "ui small green header">Doctor email:</span><%= appointment.Doctor.User.email %>
+                            </p>
+                            <div class = "ui divider"></div>
+                            <p>
+                                    <span class = "ui small green header">Doctor Name:</span> <%= appointment.Doctor.User.firstName + " " + appointment.Doctor.User.lastName %>
+                            </p>
+                            <div class = "ui divider"></div>
+
+
+                            <p>
+                                    <span class = "ui small green header">Notes:</span><%= appointment.notes %>
+                            </p>
+                            <div class = "ui divider"></div>
+                            </div>
+                        </div>
+
+                        <% }); %>
+
+                </div>
+            </div>
+            <% } else {  %>
+
+                <div>
+                    <h2 class = "ui inverted green block header"> You don't have any upcoming appointments </h2>
+                </div>
+
+                <% } %>
+
+                    <% if (oldAppointments.length !== 0) { %>
+                        <p> Old Appointments: </p>
+                        <% oldAppointments.forEach(function(appointment){ %>
+                            <div>
+                                <p> Date:
+                                    <%= appointment.date %>
+                                </p>
+                                <p> Doctor ID:
+                                    <%= appointment.doctorID %>
+                                </p>
+                                <p> Notes:
+                                    <%= appointment.notes %>
+                                </p>
+                            </div>
+                            <% }) %>
+                                <% } %>
+    </div>
+    <% include ../partials/footer %>

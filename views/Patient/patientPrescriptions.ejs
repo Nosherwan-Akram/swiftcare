@@ -1,0 +1,52 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin: 40px;"> My Prescriptions </h1>
+        <div class="ui section divider"></div>
+        <% if (prescriptions.length !== 0) { %>
+            <div class="ui piled segments animated celled divided list">
+                <% for(var i = 0; i < prescriptions.length; i++){ %>
+
+                    <div class="ui piled segment">
+                        <p><span class="ui small green header"> Medicine:</span>
+                            <%= prescriptions[i].Medicine.name; %>
+                        </p>
+                        <div class="ui divider"></div>
+                        <p><span class="ui small green header">Description:</span>
+                            <%= prescriptions[i].Medicine.description %>
+                        </p>
+                        <div class="ui divider"></div>
+                        <p><span class="ui small green header">Dosage/remarks: </span>
+                            <%= prescriptions[i].remarks %>
+                                <div class="ui divider"></div>
+                                <form method = "POST" action = "/patients/prescriptions/<%=prescriptions[i].prescriptionID%>">
+                                    <button class="ui markCompleteButton inverted green large button"> Mark as completed </button>
+                                </form>
+                    </div>
+
+                    <% }; %>
+            </div>
+            <% } else { %>
+
+                <div>
+                    <h3 class="ui large blue block header"> You don't have any current prescriptions </p>
+                </div>
+
+                <% } %>
+
+                    <% if (oldPrescriptions.length !== 0) { %>
+                        <div class="ui section divider"></div>
+                        <h3> Completed Prescriptions: </h3>
+                        <% for(var i = 0; i < oldPrescriptions.length; i++){ %>
+                            <div class="ui piled segments animated celled divided list">
+                                <div class="ui piled segment">
+                                    <p><span class="ui small green header">Medicine: <%= oldPrescriptions[i].Medicine.name; %></span></p>
+                                    <p><span class="ui small green header">Description: <%= oldPrescriptions[i].Medicine.description %></span></p>
+                                    <p><span class="ui small green header">Dosage/remarks: <%= oldPrescriptions[i].remarks %></span></p>
+
+                                </div>
+                            </div>
+
+                            <% }; %>
+                                <%}%>
+    </div>
+    <% include ../partials/footer %>

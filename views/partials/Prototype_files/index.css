@@ -1,0 +1,22 @@
+body {
+	background: #eee;
+}
+
+.css-grid{
+	width: 70%;
+	margin:  100px auto;
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 2em;
+	grid-auto-rows: 100px;
+}
+
+.btn:hover{
+	cursor:pointer;
+	transform: scale(1.1) translateX(1.1em);
+}
+
+.btn{
+	transition-duration: 3s;
+	transition-property: all;
+}

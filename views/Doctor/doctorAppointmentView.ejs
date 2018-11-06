@@ -1,0 +1,85 @@
+<% include ../partials/header %>
+	<style>
+		.patient-grid {
+			display: grid;
+			grid-template-columns: 2fr 3fr;
+			grid-gap: 2em;
+		}
+
+		.button-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			grip-gap: 2em;
+		}
+
+		.btn {
+			width: 30em;
+			margin: auto;
+		}
+	</style>
+
+	<h1> Appointment #
+		<%=appointment.appointmentID%>
+	</h1>
+
+
+	<div class="patient-grid">
+		<div class="ui card">
+			<div class="image">
+				
+				<% if (patientUser.picture != null) { %>
+					<img src="/images/dp/<%=patientUser.picture%>">
+				<%} else {%>
+					<img src="https://ind.proz.com/zf/images/default_user_512px.png">
+				<%}%>
+				
+			</div>
+			<div class="content">
+				<a class="header">
+					<%= patientUser.firstName + " " + patientUser.lastName %>
+				</a>
+				<div class="description">
+					<p><span class="ui small green header">ID:</span>
+						<%=patientUser.userID %>
+					</p>
+					<div class="ui divider"></div>
+					<p><span class="ui small green header">Gender:</span>
+						<%=patientUser.gender %>
+					</p>
+					<div class="ui divider"></div>
+					<p><span class="ui small green header">Email:</span>
+						<%=patientUser.email %>
+					</p>
+					<div class="ui divider"></div>
+					<p><span class="ui small green header">Phone:</span>
+						<%=patientUser.phone %>
+					</p>
+					<div class="ui divider"></div>
+					<p><span class="ui small green header">Birth Date:</span>
+						<%=patientUser.birthDate %>
+					</p>
+					<div class="ui divider"></div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="ui center aligned raised segment">
+
+
+			<a href="/doctors/appointments/<%=patientUser.userID%>/documents"><button class="ui center aligned massive inverted teal button btn" style="display:block;">View Documents</button></a>
+			<div class="ui section  divider"></div>
+			<a href="/doctors/appointments/<%=appointment.appointmentID%>/medicalHistory"><button class="ui massive inverted orange button btn " style="display:block;"> Medical History </button></a>
+			<div class="ui section  divider"></div>
+			<a href="/doctors/appointments/<%=patientUser.userID%>/prescribe"><button style = "display:block;" class = "btn ui massive inverted yellow button"> Prescribe Medicine </button></a>
+			<div class="ui section	 divider"></div>
+			<a href="/doctors/appointments/<%=appointment.appointmentID%>/admit"><button class="ui massive inverted orange button btn " style="display:block;"> Admit Patient </button></a>
+			<div class="ui section  divider"></div>
+			
+			<form method="POST" action="/doctors/appointments/<%=appointment.appointmentID%>/end"><button class="btn ui massive inverted green button" style="display:block;">  End Appointment </button></form>
+		</div>
+
+	</div>
+
+
+	<% include ../partials/footer %>

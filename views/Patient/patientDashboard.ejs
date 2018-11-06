@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+<div class="ui container center aligned" style = "margin:40px;">
+    <h1 class="ui massive very padded blue block header" style="margin: 40px;"> Dashboard </h1>
+    <div class = "ui section divider"></div>
+    <div class="ui raised green segment">
+        <div class="ui very padded relaxed divided list">
+
+            <div class="ui large blue header" style="font-size: 2.5em;"> Select an action:</div>
+
+
+            <div class="item">
+                <p> <a href="/patients/appointments"> <button class = "ui inverted massive green button" style = "width: 15em;" > Doctor Appointments </button> </a></p>
+            </div>
+
+            <div class="item">
+                <p> <a href="/patients/counselorAppointments"> <button class = "ui inverted massive green button" style = "width: 15em;" > Counselor Appointments </button> </a></p>
+            </div>
+
+            <div class="item">
+                <p>
+                    <a href="/patients/<%=user.userID%>/prescriptions"> <button class="ui inverted massive green button" style="width: 15em;">
+                       My Prescriptions
+                        </button>
+                    </a>
+                </p>
+            </div>
+            <div class="item">
+                <p> <a href="/patients/<%=user.userID%>/counselor"> <button class = "ui inverted massive green button" style = "width: 15em;" > My Counselor </button> </a></p>
+            </div>
+            <div class="item">
+                <p> <a href="/patients/<%=user.userID%>/history"> <button class = "ui inverted massive green button" style = "width: 15em;"> Edit Medical History</button> </a></p>
+            </div>
+            <div class="item">
+                <p> <a href="/patients/documents"> <button class = "ui inverted massive green button" style = "width: 15em;"> Medical Documents </button> </a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>
+
+
+
+<!--
+<p><a href="/patients/<%=user.userID%>/appointments"><button> My Appointments </button></a></p>
+<p><a href="/patients/<%=user.userID%>/prescriptions"><button> My Prescriptions </button></a></p>
+<p><a href="/patient/<%=user.userID%>/counselor"><button> My Counselor </button></a></p>
+<p><a href="/patient/<%=user.userID%>/history"><button> My Medical History </button></a></p>
+-->
+
+

@@ -1,0 +1,13 @@
+<h1> Dashboard </h1>
+<p> Email: <%=user.email%> </p>
+<% if (user.userType === "Doctor"){ %>
+	<p> Doctor specialization: <%= subClass.specialization%> </p>
+<%};%>
+
+<% if (user.userType === "Patient"){ %>
+	<p> You're a patient! </p>
+
+<% }; %>
+
+
+

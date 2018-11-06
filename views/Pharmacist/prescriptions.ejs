@@ -1,0 +1,75 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin:40px;"> Prescriptions </h1>
+        <div class="ui section divider"></div>
+
+        <% if (prescriptions.length !== 0) { %>
+            <div class="ui piled segments">
+                <div class="ui animated list">
+                    <% prescriptions.forEach(function(prescription) { %>
+                        <div class="item">
+                            <div class="ui green piled segment">
+                                <p><span class="ui small green header">Prescription ID:</span>
+                                    <%= prescription.prescriptionID %>
+                                </p>
+                                <p><span class="ui small green header">Medicine Name:</span>
+                                    <%= prescription.Medicine.name %>
+                                </p>
+                                <p><span class="ui small green header">Quantity:</span>
+                                    <%= prescription.quantity %>
+                                </p>
+                                <p><span class="ui small green header">Remarks:</span>
+                                    <%= prescription.remarks %>
+                                </p>
+                                <% if (!prescription.served) { %>
+                                    <form action="/pharmacists/prescriptions/<%= prescription.prescriptionID %>?_method=PATCH" method="POST">
+                                        <input class = "ui center aligned large inverted green button" type="submit" value="Dispense">
+                                    </form>
+                                    <% } %>
+                                <% }); %>
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+            <% } else { %>
+                <h2 class="ui large blue inverted block header very padded"> There are currently no prescriptions </h2>
+
+                <% } %>
+
+    </div>
+    <% include ../partials/footer %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <h1>Get prescriptions</h1>
+<h1></h1>
+<% if (prescriptions.length != 0) { %>
+    <% prescriptions.forEach(function(prescription){ %>
+        <div>
+            <%= prescription.prescriptionID %>
+            <p><strong>Remarks : </strong><%= prescription.remarks %></p>
+            <p><strong>Drug ID : </strong><%= prescription.medicineID %></p>
+            <p><strong>Quantity : </strong><%= prescription.quantity %></p>
+
+            <% if (!prescription.served) { %>
+                <form action="/prescriptions/<%= prescription.prescriptionID %>?_method=PATCH" method="POST">
+                    <input type="submit" value="Dispense">
+                </form>
+            <% } %>
+            <hr>
+        </div>
+    <% }) %>
+<% } %> -->

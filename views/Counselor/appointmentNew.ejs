@@ -1,0 +1,77 @@
+<% include ../partials/header %>
+
+    <div class="ui  center aligned container" style="margin:100px 0px;">
+
+        <h1 class="ui massive blue block header very padded">Create Appointment </h1>
+
+        <div class="ui divider"></div>
+        <div class="left aligned ui green raised segment" style="width:60%; margin: auto;">
+
+            <form action = "/counselors/appointments" method = "POST">
+                <div class="ui form">
+                    <div class="ui grid" style="margin: auto;">
+                        <div class="row">
+                            <div class="four wide column">
+
+                                <label for="enter_date" class="ui green medium header" id="date1">Date/Time:</label>
+
+                            </div>
+
+                            <div class="eight wide column">
+                                <input name="appDate" type="datetime-local" id="enter_Date" placeholder="Date" required>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="row">
+                            <div class="four wide column">
+                                <label for="patient_id" class="ui green medium header">
+                                                        Patient ID:    
+
+                                                    </label>
+                            </div>
+
+
+                            <div class="eight wide column">
+                                <input type="text" name="patientID" id="patient_id" value = "<%=patient.userID%>" readonly>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="four wide column">
+                                <label for="notes" class="ui green medium header">
+                                              Notes:
+                                          </label>
+                            </div>
+
+                            <div class="eight wide column">
+
+                                <textarea name="notes" id="textarea" rows="4"></textarea>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ui center aligned	 container">
+                            <button class="ui  compact  blue inverted massive button column center aligned ">
+                                          Create
+
+                                       </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+ <% include ../partials/footer %>

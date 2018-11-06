@@ -1,0 +1,50 @@
+<% include ./partials/header %>
+
+<style>
+#nav
+{
+    background-color: rgba(125,200,255,0.7);
+}
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    padding-bottom: 5%;
+
+    background: url(https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=750&q=80) no-repeat center center fixed;
+    background-size: cover;
+}
+#login_and_logout_buttons{
+  margin-top: 5px;
+}
+#seg1{
+  margin: auto;
+  width: 100%;
+  border-radius: 50px;
+  background-color: rgba(125,200,255,0.25);
+  color: white;
+    }
+#cont1{
+  padding-top: 15%;
+}
+
+#header{
+    font-size: 3.5rem;
+}
+</style>
+    <div id="cont1" class="ui center container">
+        	<div id="seg1" class="ui center aligned segment">
+        	  <h1 class="ui inverted header" id="header" >Your Journey to better health care begins here</h1>
+        	  	<div class="ui center aligned container">
+              <a href = "/login">
+        	  		<button class="ui compact blue labeled icon massive button center aligned">
+        	  			<i class="sign in icon"></i>Log in
+        	  		</button>
+                </a>
+        	  	</div>
+
+        	</div>
+    	
+    </div>
+<% include ./partials/footer %>

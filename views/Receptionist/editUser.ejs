@@ -1,0 +1,245 @@
+<% include ../partials/header %>
+
+	<div class="ui  center aligned container" style="margin:100px 0px;">
+
+		<h1 class="ui massive blue block header very padded">Update User Details </h1>
+
+		<div class="ui divider"></div>
+		<div class="left aligned ui green raised segment" style="width:60%; margin: auto;">
+
+			<form method = "POST" action = "/receptionist/users/<%=user.userID%>/edit">
+				<div class="ui form">
+					<div class="ui grid" style="margin: auto;">
+
+
+
+
+						<div class="row">
+							<div class="four wide column">
+								<label for="firstname" class="ui green medium header">
+												 		First Name:
+												 	</label>
+							</div>
+
+							<div class="eight wide column">
+
+								<input required value = "<%=user.firstName%>" name="firstName" type="text" id="firstname">
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="four wide column">
+								<label for="lastName" class="ui green medium header">
+												 		Last Name:
+												 	</label>
+							</div>
+
+							<div class="eight wide column">
+
+								<input required value = "<%=user.lastName%>" name="lastName" type="text" id="lastname">
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="four wide column">
+								<label for="cnic" class="ui green medium header">
+												 		CNIC:
+												 	</label>
+							</div>
+
+							<div class="eight wide column">
+
+								<input required value = "<%=user.cnic%>" name="cnic" type="text" id="cnic">
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="four wide column">
+								<label for="phone" class="ui green medium header">
+												 		Phone:
+												 	</label>
+							</div>
+
+							<div class="eight wide column">
+
+								<input required value = "<%=user.phone%>" name="phone" type="text" id="phone">
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="four wide column">
+								<label for="gender" class="ui green medium header">
+													   	    	Gender:    
+
+													   	    </label>
+							</div>
+
+
+							<div class="eight wide column">
+								<select required value = "<%=user.gender%>" name="gender" id="gender" placeholder="Gender">
+										                       <option value = "M">M</option>
+										                       <option value = "F">F</option>
+									                    </select>
+
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="four wide column">
+
+								<label for="enter_date" class="ui green medium header" id="date1">Date of Birth:</label>
+
+							</div>
+
+							<div class="eight wide column">
+								<input required value = "<%=user.birthDate%>" name="birthDate" type="date" id="enter_Date" placeholder="Date">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="four wide column">
+								<label for="email" class="ui green medium header">
+												 		Email:
+												 	</label>
+							</div>
+
+							<div class="eight wide column">
+
+								<input value = "<%=user.email%>" name="email" type="email" id="email" required>
+							</div>
+
+						</div>
+
+
+						<div class="row">
+							<div class="four wide column">
+								<label for="usertype" class="ui green medium header">
+													   	    	User Type:    
+
+													   	    </label>
+							</div>
+
+
+							<div class="eight wide column">
+								<select disabled name="userType" value = "<%=user.userType%>" id="usertype" required>
+										                       <option value = "Patient">Patient</option>
+										                       <option value = "Doctor">Doctor</option>
+										                       <option value = "Receptionist">Receptionist</option>
+										                       <option value = "Pharmacist">Pharmacist</option>
+										                       <option value = "Counselor">Counselor</option>
+									                    </select>
+
+							</div>
+
+						</div>
+
+						<div class="row" id = "counselorRow">
+							<div class="four wide column">
+								<label for="counselorID" class="ui green medium header">
+												 		Counselor ID:
+												 	</label>
+							</div>
+
+							<div class="eight wide column">
+
+								<input name="counselorID" type="text" id="counselorID">
+							</div>
+						</div>
+
+						<div class="row" id = "specializationRow">
+							<div class="four wide column">
+								<label for="specialization" class="ui green medium header">
+												 		Specialization:
+												 	</label>
+							</div>
+
+							<div class="eight wide column">
+
+								<input  name="specialization" type="text" id="specialization">
+							</div>
+						</div>
+
+						
+
+						<div class="row" id = "hoursRow">
+								<div class="four wide column">
+									<label for="hours" class="ui green medium header">
+																	   Hours:    
+	
+																   </label>
+								</div>
+	
+	
+								<div class="eight wide column">
+									<select  name="hours" id="hours" placeholder="Hours">
+																   <option value = "Fixed">Fixed</option>
+																   <option value = "Variable">Variable</option>
+															</select>
+	
+								</div>
+	
+							</div>
+
+
+
+
+
+
+
+
+						<div class="ui center aligned	 container" style="margin-bottom: 30px">
+							<button class="ui  compact  blue inverted massive button column center aligned ">
+				                            		  Update 
+
+				                            		 
+
+				                      			</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script>
+		function updateDisplay(){
+			console.log("updating display");
+			var selected = $("#usertype").val();
+			console.log(selected);
+
+			if(selected === "Patient"){
+				$("#specializationRow").hide();
+				$("#hoursRow").hide();
+				$("#counselorRow").show();
+
+			}
+			else if (selected === "Doctor"){
+				console.log("Doc selected");
+				$("#specializationRow").show();
+				$("#hoursRow").show();
+				$("#counselorRow").hide()
+			} else {
+				console.log("Other selected");
+				$("#specializationRow").hide();
+				$("#hoursRow").hide();
+				$("#counselorRow").hide();
+			}
+		}
+
+		$(document).ready(function(){
+			$("#usertype").val("<%=user.userType%>");
+			updateDisplay();
+			$("#usertype").change(updateDisplay);
+			updateDisplay();
+
+
+			
+		})
+	</script>
+
+	<% include ../partials/footer %>

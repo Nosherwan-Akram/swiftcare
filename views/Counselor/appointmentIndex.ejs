@@ -1,0 +1,84 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin:40px;"> Appointments </h1>
+        <div class="ui section divider"></div>
+
+        <% if (appointments.length !== 0) { %>
+            <div class="ui piled segments">
+                <div class="ui animated list">
+                    <% appointments.forEach(function(appointment){ %>
+                        <div class="item">
+                            <div class="ui green piled segment">
+                                <p><span class="ui small green header">Patient ID:</span>
+                                    <%= appointment.Patient.userID %>
+                                </p>
+                                <p><span class="ui small green header">Patient Name:</span>
+                                    <%= appointment.Patient.User.firstName + " " + appointment.Patient.User.lastName %>
+                                </p>
+                                <p><span class="ui small green header">Patient Phone:</span>
+                                    <%= appointment.Patient.User.phone %>
+                                </p>
+                                <p><span class="ui small green header">Patient Email:</span>
+                                    <%= appointment.Patient.User.email %>
+                                </p>
+                                <p><span class="ui small green header">Notes:</span>
+                                    <%= appointment.notes %>
+                                </p>
+
+
+                                <p><span class="ui small green header">Date:</span>
+                                    <%= appointment.date %>
+                                </p>
+
+                                <form action="/counselors/appointments/<%= appointment.dataValues.appointmentID %>?_method=PATCH" method="POST">
+                                    <input class = "ui big green inverted button" type="submit" value="Mark Completed">
+                                </form>
+
+                                <div class="ui divider"></div>
+
+                                
+
+
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+
+            </div>
+            <% } else { %>
+                <h2 class="ui large blue inverted block header very padded"> There are currently no active appointments </h2>
+
+                <% } %>
+
+    </div>
+    <% include ../partials/footer %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <h1>Index</h1>
+
+
+<% for (var i = 0; i < appointments.length; i++) { %>
+    <div>
+        <p><%= appointments[i].counselorID %></p>
+        <p><%= appointments[i].Patient.User.firstName +  " " + appointments[i].Patient.User.lastName %></p>
+        <p><%= appointments[i].date %></p>
+        <hr>
+    </div>
+<% } %> -->

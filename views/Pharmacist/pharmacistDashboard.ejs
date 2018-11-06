@@ -1,0 +1,62 @@
+<% include ../partials/header %>
+<div class="ui container center aligned" style = "margin:40px;">
+    <h1 class="ui massive very padded blue block header" style="margin: 40px;"> Dashboard </h1>
+    <div class = "ui section divider"></div>
+    <div class="ui raised green segment">
+        <div class="ui animated very padded relaxed divided list">
+
+            <div class="ui large blue header" style="font-size: 2.5em;"> Select an action:</div>
+
+
+            <div class="item">
+                <p> <a href="/pharmacists/prescriptions"> <button class = "ui inverted massive green button" style = "width: 15em;" > View Prescriptions</button> </a></p>
+            </div>
+            <div class="item">
+                <p>
+                    <a href="/pharmacists/medicines"> <button class="ui inverted massive green button" style="width: 15em;">
+                        View Medicines
+                        </button>
+                    </a>
+                </p>
+            </div>
+
+            <div class="item">
+                <p>
+                    <a href="/pharmacists/medicines/new"> <button class="ui inverted massive green button" style="width: 15em;">
+                        Add Medicines
+                        </button>
+                    </a>
+                </p>
+            </div>
+
+
+
+            
+        </div>
+               
+    </div>
+</div>
+<% include ../partials/footer %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>Pharmacist</h1>
+
+<h4><%= user.firstName + " " + user.lastName %></h4>
+
+
+<a href="/pharmacists/prescriptions">View Prescriptions</a>
+<a href="/pharmacists/medicines">View Medicines</a>
+<a href="/pharmacists/medicines/new">Add Drug</a>
+ -->

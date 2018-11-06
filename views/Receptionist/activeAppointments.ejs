@@ -1,0 +1,76 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin:40px;"> Active Appointments </h1>
+        <div class="ui section divider"></div>
+
+        <% if (appointments.length !== 0) { %>
+            <div class="ui piled segments">
+                <div class="ui animated list">
+                    <% appointments.forEach(function(appointment) { %>
+                        <div id = "a<%=appointment.appointmentID%>" class="item">
+                            <div class="ui green piled segment">
+                                <p><span class = "ui small green header">Appointment ID:</span>
+                                    <%= appointment.appointmentID %>
+                                </p>
+                                <p><span class = "ui small green header">Date:</span>
+                                    <%= appointment.date %>
+                                </p>
+                                <p><span class = "ui small green header">Patient ID:</span>
+                                    <%= appointment.patientID %>
+                                </p>
+                                <% if (appointment.doctorID){ %>
+                                    <p><span class = "ui small green header">DoctorID:</span>
+                                        <%= appointment.doctorID %>
+                                    </p>
+                                    <% } %>
+                                        <% if (appointment.counselorID){ %>
+                                            <p><span class = "ui small green header">Counselor ID:</span>
+                                                <%= appointment.counselorID %>
+                                            </p>
+                                            <% } %>
+                                                <div class="ui divider"></div>
+                                                
+                                                    <a href="appointments/<%=appointment.appointmentID%>"><button style = "display:inline;" class = "ui big inverted green button">View</button></a>
+                                                    <button id = "<%=appointment.appointmentID%>"  style = "display:inline;" class = "ui deleteButton big inverted red button">Delete</button>
+                                            
+                            </div>
+                        </div>
+                        <%}); %>
+                </div>
+
+            </div>
+            <% } else { %>
+                <h2 class="ui large blue inverted block header very padded"> There are currently no active appointments </h2>
+
+                <% } %>
+
+    </div>
+
+    <script>
+
+
+        
+
+        function deleteAppointment(event){
+            console.log("event triggered");
+            button = event.target;
+            var id = button.getAttribute("id");
+
+            $.ajax({
+            url: '/receptionist/appointments/' + id,
+            type: 'DELETE',
+            success: function() {
+                $("#a" + id).css("display", "none");
+    }
+})};
+
+
+
+        
+        $(".deleteButton").on("click", deleteAppointment);
+        
+
+    </script>
+
+
+    <% include ../partials/footer %>

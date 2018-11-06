@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+<div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin:40px;"> Documents </h1>
+        <div class="ui section divider"></div>
+    
+        <% if (documents.length !== 0) { %>
+    
+            <div class = "ui piled segments">
+    
+                <% documents.forEach (function(document){ %>
+    
+                    <div class = "ui piled segment">
+                        <img class = "ui massive rounded image" src = "/images/<%= document.path %>">
+                        <div class = "ui divider"></div>
+                        <p> <%= document.description %> </p>
+                    </div>
+    
+                <%})%>
+    
+            </div>
+    
+        <% } else { %>
+    
+            <h3 class = "ui blue block header"> You do not have any documents uploaded yet. </h3>
+    
+        <% } %>
+<% if (currentUser.userType === "Patient"){ %>
+    <div class = "ui section divider"></div>
+    <h3 class = "ui blue block header"> Upload a document. </h3>
+    <form ref='uploadForm' 
+    id='uploadForm' 
+    action="/patients/documents" 
+    method='post' 
+    encType="multipart/form-data">
+      <input type="file" name="sampleFile" />
+      <input type="text" name = "desc">
+      <input class = "ui inverted blue button" type='submit' value='Upload!' />
+    </form>     
+<% } %>
+
+</div>
+
+<% include ../partials/footer %>

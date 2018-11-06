@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+<h1> Doctor # <%=doctor.userID%> </h1>
+<div class = "ui section divider"></div>
+<div class = "ui segment raised">
+    <div class = "ui text container center aligned ">
+        
+        <div class = "ui green segment">
+        <% if(user.picture) { %>
+       <img style = "left:6em;" class = "ui  large image" src = "/images/dp/<%=user.picture%>">
+        <div class = "ui divider"></div>
+        <% }%>
+        <p> <span class = "ui small green header">First Name:</span> <%=user.firstName%> </</p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> Last Name:</span> <%=user.lastName%> </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> Gender:</span><%=user.gender%>  </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header">Email:  </span><%=user.email%> </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> CNIC: </span><%=user.cnic%> </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> Phone: </span><%=user.phone%> </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> Work hours: </span><%=doctor.workHours%> </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> Specialization: </span><%=doctor.specialization%> </p>
+        <div class = "ui divider"></div>
+        <div class = "ui hidden vertical divider"> </div>
+        <div class = "ui right aligned basic segment">
+        <div class = "ui buttons" style = "display:inline-block;">
+        <form style = "display:inline;margin-right:20px;" method = "POST" action = "<%=doctor.userID%>?_method=DELETE" ><button style = "display:inline;" class = "item ui big inverted red button deleteButton" id = "<%=doctor.userID%>">Delete </button></form>
+        <button class = "ui item big inverted yellow button" style = "display:inline;"> <a href = "/receptionist/users/<%=doctor.userID%>/edit">Edit</a> </button>
+        
+        </div>
+    </div>
+    
+    </div>
+    </div> 
+</div>
+<% include ../partials/footer %>

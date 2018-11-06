@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin: 40px;"> My Counselor </h1>
+        <div class="ui section divider"></div>
+
+        <div class="ui center aligned stacked green segment">
+            <p> <span class="ui small green header">Name:</span>
+                <%= counselor.User.firstName  + " " + counselor.User.lastName %> </p>
+            <p> <span class="ui small green header">Email:</span>
+                <%= counselor.User.email %>
+            </p>
+            <p> <span class="ui small green header">Phone:</span>
+                <%= counselor.User.phone %>
+            </p>
+            <p>
+                <form method="POST" action="/patients/<%=currentUser.userID%>/counselor/<%=counselor.userID%>">
+                    <button class = "ui inverted green large button">Request Appointment</button>
+                </form>
+            </p>
+        </div>
+    </div>
+<% include ../partials/footer %>

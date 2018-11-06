@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+<h1> Hello, <%=currentUser.firstName%></h1>
+<div class = "ui section divider"></div>
+<div class = "ui segment raised">
+    <div class = "ui text container center aligned ">
+        
+        <div class = "ui green segment">
+        <% if(currentUser.picture) { %>
+       <img style = "left:6em;" class = "ui  large  rounded image" src = "/images/dp/<%=currentUser.picture%>">
+        <div class = "ui divider"></div>
+        <% }%>
+        <p> <span class = "ui small green header">First Name:</span> <%=currentUser.firstName%> </</p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> Last Name:</span> <%=currentUser.lastName%> </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> Gender:</span><%=currentUser.gender%>  </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header">Email:  </span><%=currentUser.email%> </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> CNIC: </span><%=currentUser.cnic%> </p>
+        <div class = "ui divider"></div>
+        <p> <span class = "ui small green header"> Phone: </span><%=currentUser.phone%> </p>
+        <div class = "ui divider"></div>
+        
+        <div class = "ui hidden vertical divider"> </div>
+        <div class = "ui right aligned basic segment">
+        <div class = "ui buttons" style = "display:inline-block;">
+               
+           <a href = "/users/changePassword"> <button class="ui large inverted green button">Change Password</button></a>
+            <a href = "/users/profilepicture"><button class = "ui large yellow inverted button">Change Picture</button></a>
+                
+        </div>
+    </div>
+    
+    </div>
+    </div> 
+</div>
+<% include ../partials/footer %>
+  
+  
+  
+  
+  
+  
+

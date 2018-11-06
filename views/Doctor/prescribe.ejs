@@ -1,0 +1,127 @@
+ <% include ../partials/header %>
+ 
+
+<div class ="ui  center aligned container" style = "margin:100px 0px;">
+
+  <h1 class = "ui massive blue block header very padded"> Create Prescription </h1>
+      <div class = "ui divider"></div>
+
+           <div class = "left aligned ui green raised segment" style="width:60%; margin: auto;">
+
+                <form action = "/doctors/appointments/<%=patientUser.userID%>/prescribe" method = "POST" id = "prescription-form"><div class = "ui form">
+
+              
+                
+                      <div class = "ui grid" style = "margin: auto;">
+
+
+
+                            <div class="row">
+                                  <div class = "four wide column">
+                                       <label for="patientName" class = "ui  green medium header" >Patient Name:</label>
+                                  </div>
+
+                                  <div class = "eight wide column" >
+                                       <input type="text"  id="patientName" value = "<%=patientUser.firstName + " " + patientUser.lastName %>" readonly>
+                                 </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class = "four wide column">
+                             
+                                    <label for="medicineName" class = "ui  green medium header"  >Medicine Name:</label>
+                                </div>
+                               
+                                <div class = "eight wide column" >
+                                    <select name="medID" onselect="updateQuantity" id="medicineName" required>
+                                            <% medNames.forEach(function(medicine) { %>
+                                                <option value = "<%=meds[medicine]%>"><%= medicine %></option>
+                                            <% }); %>
+                                    </select>
+                                </div>
+                            </div>
+
+                           
+                            <div class="row">
+                                <div class = "four wide column">
+                                     <label for="quantity" class = "ui  green medium header" >Quantity:</label>
+                                </div>
+
+                               <div class="four wide column">
+                                    <select name = "quantity"  id="quantity" required>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                    </select>
+                               </div>
+                            </div>
+
+                              <div class="row">
+                                    <div class = "four wide column">
+
+                                        <label for="remarks" class = "ui  green medium header"  >Remarks:</label>
+                                    </div>
+                                    <div class = "eight wide column" >
+                                          <textarea name = "remarks" id="remarks"></textarea>
+                                    </div>
+                             </div>
+                            
+                             <div class = "ui center aligned   container">
+                                   <button id = "submit-button" class="ui  compact  blue inverted massive button column center aligned ">
+                                         Create
+
+                                    </button>
+                             </div>
+                      </div>
+                </div></form>
+          </div>
+          <div id = "message-box" class = "ui center aligned text container"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        var frm = $('#prescription-form');
+    
+        frm.submit(function (e) {
+    
+            e.preventDefault();
+    
+            $.ajax({
+                type: frm.attr('method'),
+                url: frm.attr('action'),
+                data: frm.serialize(),
+                success: function (data) {
+                    if (data === ("1"));
+                    var messageBox = document.getElementById('message-box');
+                    messageBox.innerText = "Prescription uploaded successfully."
+                    messageBox.style.backgroundColor = "green";
+                    setTimeout(function(){
+                        var messageBox = document.getElementById('message-box');
+                        messageBox.innerText = "";
+                        messageBox.style.backgroundColor = "transparent";
+                    }, 2000);
+                    $("#remarks").val("");
+                },
+                error: function (data) {
+                    var messageBox = document.getElementById('message-box');
+                    messageBox.innerText = "An error occured. Please try again";
+                    messageBox.style.backgroundColor = "red";
+                    setTimeout(function(){
+                        var messageBox = document.getElementById('message-box');
+                        messageBox.innerText = "";
+                        messageBox.style.backgroundColor = "transparent";
+                    }, 2000);
+                },
+            });
+        });
+        
+    </script>
+
+ <% include ../partials/footer %>

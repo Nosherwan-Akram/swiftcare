@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+<div class="ui text container center aligned">
+    <h1 class="ui massive very padded blue block header" style = "margin: 40px;">Pharmacists</h1>
+    <% if (pharmacists.length !== 0) { %>
+        <div class="ui section divider"></div> 
+            <div class="ui container">
+                <div class="ui piled raised segments">
+                    <div class="ui animated list">
+                        <% for(var i = 0; i < pharmacists.length; i++){ %>
+                            <div class="ui class item raised green segment">
+                                <p><span class = "ui small green header">Pharmacist ID:</span>
+                                    <%=pharmacists[i].User.userID%>
+                                </p>
+                                <div class = "ui divider"></div>
+                                <p>
+                                    <span class = "ui small green header">Email:</span>
+                                    <%= pharmacists[i].User.email %>
+                                </p>
+                                <div class = "ui divider"></div>
+                                <p> <a href = "pharmacists/<%=pharmacists[i].User.userID%>"> <button class = "ui inverted large green button">View</div></button></a> </p>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+<% include ../partials/footer %>

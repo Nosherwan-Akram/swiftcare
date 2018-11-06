@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+    <div class="ui container center aligned" style="margin:40px;">
+        <h1 class="ui massive very padded blue block header" style="margin: 40px;"> Dashboard </h1>
+        <div class="ui section divider"></div>
+        <div class="ui raised green segment">
+            <div class="ui animated very padded relaxed divided list">
+
+                <div class="ui large blue header" style="font-size: 2.5em;"> Select an action:</div>
+
+
+                <div class="item">
+                    <p> <a href="/counselors/requests"> <button class = "ui inverted  massive green button" style = "width: 15em;" > View Requests</button> </a></p>
+                </div>
+                <div class="item">
+                    <p>
+                        <a href="/counselors/appointments"> <button class="ui inverted  massive green button" style="width: 15em;">
+                            View Appointments
+                            </button>
+                        </a>
+                    </p>
+                </div>
+                <div class="item">
+                    <p> <a href="/counselors/patients"> <button class = "ui inverted massive green button" style = "width: 15em;" > View Patients</button> </a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include ../partials/footer %>

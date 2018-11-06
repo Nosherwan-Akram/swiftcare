@@ -1,0 +1,11 @@
+.patient-grid{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 2em;  
+}
+
+.button-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grip-gap: 2em;
+}

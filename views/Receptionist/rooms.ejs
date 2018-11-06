@@ -1,0 +1,70 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class="ui massive blue block header very padded" style="margin:40px;"> Rooms </h1>
+        <div class="ui section divider"></div>
+
+        <% if (rooms.length !== 0) { %>
+            <div class="ui piled segments">
+                <div class="ui animated list">
+                    <% rooms.forEach(function(room) { %>
+                        <div class="item">
+                            <div class="ui green piled segment">
+                                <p><span class="ui small green header">Room number:</span>
+                                    <%= room.roomNumber %>
+                                </p>
+
+                                <p><span class="ui small green header">Floor:</span>
+                                    <%= room.floor %>
+                                </p>
+
+
+                                <p><span class="ui small green header">Vacant:</span>
+                                    <%if (room.isVacant){ %>
+                                        Yes
+                                        <% } else {%>
+                                            No
+                                            <% } %>
+                                </p>
+
+                                <p><button id = "<%=room.roomNumber%>" class = "deleteButton ui large red inverted button"> Delete</button></p>
+
+                            </div>
+                        </div>
+                        <%}); %>
+                </div>
+
+            </div>
+            <% } else { %>
+                <h2 class="ui large blue inverted block header very padded"> There are currently no rooms </h2>
+
+                <% } %>
+                    <div class="ui divider"></div>
+
+                    <div class = "ui center aligned container">
+                       <a href = "/receptionist/rooms/new"> <button class = "ui massive green inverted button"> Add Room</button></a>
+                    </div>
+
+    </div>
+    <script type = "text/javascript">
+        $(document).ready(function(){
+            $(".deleteButton").click(function(e) {
+                e.preventDefault();
+                console.log("Sending request");
+                console.log("id: " + e.target.id);
+                $.ajax({
+                  type: "DELETE",
+                  url: "/receptionist/rooms",
+                  data: {
+                    id: e.target.id
+                  },
+                  success: function(result) {
+                    location.reload(true);
+                  },
+                  error: function(result) {
+                    alert('error');
+                  }
+                });
+              });
+        })
+    </script>
+    <% include ../partials/footer %>

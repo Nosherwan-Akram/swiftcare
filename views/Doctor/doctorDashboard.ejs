@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+<div class="ui center aligned container">
+    
+<h1 class="ui massive blue block header very padded" style="margin:40px;"> My Appointments </h1>
+<div class = "ui section divider"></div>
+<% if (appointments.length != 0) { %>
+<div class = "ui piled segments">
+
+
+	<% appointments.forEach(function(appointment){ %>
+		<div class = "ui piled green segment">
+			<p> <span class = "ui small green header">Appointment ID:</span> <%=appointment.appointmentID%></p>
+			<div class = "ui divider"></div>
+			<p><span class = "ui small green header">Date:</span><%=appointment.date%></p>
+			<div class = "ui divider"></div>
+			<p><span class = "ui small green header">Patient ID: </span><%=appointment.patientID%></p>
+			<div class = "ui divider"></div>
+			<p> <a href = "/doctors/appointments/<%=appointment.appointmentID%>"><button class = "ui large green inverted button">Start Appointment</button></a>  </p>
+			<p> <button class = "ui large red inverted button cancel-button" id = "<%=appointment.appointmentID%>">Cancel Appoinment </button></p>
+		</div> 
+
+	<% }); %>
+</div>
+<% }  else { %>
+	<h3 class = "ui big blue block header">You don't have any upcoming appointments.</h3>
+<% }  %>
+
+<script>
+	
+	$(".cancel-button").on("click", cancelAppointment);
+
+	function cancelAppointment(event){
+		
+		var btn = event.target;
+		console.log(btn);
+		console.log(btn.id);
+		var id = btn.id;
+		console.log("calling delete on " + '/doctors/appointments/'+id);
+		$.ajax({
+   url: '/doctors/appointments/'+id,
+   
+   success: function(data) {
+      if (data === "1"){
+		location.reload(true);
+	  }
+   },
+   type: "DELETE"
+});
+
+	}
+
+</script>
+
+<% include ../partials/footer %>

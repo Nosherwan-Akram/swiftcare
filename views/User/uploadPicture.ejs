@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+<div class = "ui centered container">
+        <h1 class="ui massive blue block header very padded" style="margin:40px;"> Upload picture </h1>
+        <div class="ui section divider"></div>
+        <form ref='uploadForm' 
+        id='uploadForm' 
+        action="/users/profilepicture" 
+        method='POST' 
+        encType="multipart/form-data">
+        <input type="file" name="sampleFile" />
+        <input type='submit' value='Upload!' />
+        </form>    
+</div>
+<% include ../partials/footer %>

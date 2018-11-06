@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+
+
+    <div class="ui  center aligned container" style="margin:100px 0px;">
+        <h1 class="ui massive blue block header very padded">Add Room </h1>
+        <div class="ui divider"></div>
+        <div class="left aligned ui green raised segment" style="width:60%; margin: auto;">
+
+            <form method = "POST" action = "/receptionist/rooms/new">
+                <div class="ui form">
+
+                    <div class="ui grid" style="margin: auto;">
+
+
+                        <div class="row">
+
+                            <div class="four wide column">
+                                <label class="ui  green medium header" for="foor">Floor:</label>
+                            </div>
+
+                            <div class="eight wide column">
+                                <input name="floor" type="text" id="floor" required>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="four wide column">
+                                <label class="ui  green medium header" for="roomNo">Room No:</label>
+                            </div>
+
+                            <div class="four wide column">
+                                <input type="text" id="roomNo" name="roomNo" required>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ui center aligned  container">
+                            <button class="ui  compact  blue massive button column center aligned ">
+                                             Add
+                                      </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <% include ../partials/footer %>

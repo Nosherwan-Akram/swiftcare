@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+    <div class="ui center aligned container">
+        <h1 class = "ui very padded massive blue block header" style="margin:40px;"> Appointment #
+            <%= appointment.appointmentID %>
+        </h1>
+    </div>
+    <div class = "ui section divider"></div> 
+    <div class = "ui horizontal piled segments">
+        <div class = "ui piled segment">
+            <h3 class = "text container center aligned"> Patient </h3>
+            <div class = "text container">
+                <p>Name: <%= patientUser.firstName + " " + patientUser.lastName %></p>
+                <p>Gender: <%= patientUser.gender %> </p>
+                <p>Email: <%= patientUser.email %> </p>
+                <p>CNIC: <%= patientUser.cnic %> </p>
+
+            </div>
+        </div>
+
+        <div class = "ui piled segment">
+            <h3 class = "text container center aligned"> Doctor </h3>
+                <div class = "text container">
+                        <p>Name: <%= doctorUser.firstName + " " + doctorUser.lastName %></p>
+                        <p>Gender: <%= doctorUser.gender %> </p>
+                        <p>Email: <%= doctorUser.email %> </p>
+                        <p>CNIC: <%= doctorUser.cnic %> </p>
+        
+                    </div>
+        </div>
+    </div>
+
+
+    <% include ../partials/footer %>
